@@ -1,2 +1,2 @@
 # NextJS-JWT-Authentication
-JWT Authentication in NextJS Application
+Will be coming soon
