@@ -1,2 +1,2 @@
-# NextJS-JWT-Authentication
-Will be coming soon
+# NextJS-Auth-Guard
+How to make Auth Guard at NextJS?
