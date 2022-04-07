@@ -9,12 +9,13 @@ import * as jwt from 'jsonwebtoken'
 export default async function handler(req, res) {
     try{
         if (req.method === 'POST') {
-            const bcryptPass = await bcrypt.compare(req.body.password, user.password);
+            const bcryptPass = await bcrypt.compare(req.body.password, user.password); // gelen şifreyi veritabanımızdaki gelen verideki şifre ile karşılaştırıyoruz.
             if (!bcryptPass) {
             return res.status(401).json({
                 error: 'Email Or password wrong'
             });
             }
+            // Token oluşturuyoruz
             const token = jwt.sign(
                 {
                 email: user.email,
@@ -25,6 +26,7 @@ export default async function handler(req, res) {
                 expiresIn: "12h"
                 }
             );
+            // Client side'da tutulmasını istediğimiz bilgileri response'da dönüyoruz.
             return res.status(200).json({
                 email: user.email,
                 name: user.name,

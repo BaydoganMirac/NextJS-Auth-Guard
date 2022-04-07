@@ -11,6 +11,7 @@ export const userService = {
     checkAuth
 };
 
+// Kullanıcı login olurken çalışacak fonksiyon
 async function login(userEmail, userPassword) {
     let userInfo = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URI + '/api/user/login', {email : userEmail, password: userPassword});
     if(userInfo?.data){
@@ -22,12 +23,14 @@ async function login(userEmail, userPassword) {
         return false;
     }
 }
-
+// Kullanıcı çıkış yaptığı zaman localstorage'daki veriyi siliyoruz.
+// Ekstra güvenlik istiyorsak /api/user/chechAuth.js'de 14. kod satırındaki yoruma ek olarak; kullanıcının oluşturduğu tokenları kaydettiğimiz tablodaki isActive kolonunun 0 yapmamız bu tokenı süresi bitmediği halde kullanmasını engelleyebiliriz. Bu durum kullanıcının aktifliğini kontrol etmek amacıyla da kullanılabilir.
 function logout() {
     localStorage.removeItem('user');
     userSubject.next(null);
     Router.push('/login');
 }
+// Kullanıcı protected sayfalara girdiği zaman kayıtlı olan token'ın geçerliliğini kontrol etmek amacıyla oluşturduğumuz fonksiyon
 function checkAuth(token){
     const config = {
         headers: { Authorization: `Bearer ${token}` }

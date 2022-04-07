@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { userService } from './userService';
 
 
-export default function AtuhGuard({ children }) {
+export default function AuthGuard({ children }) {
     const router = useRouter();
     const [authorized, setAuthorized] = useState(false);
 

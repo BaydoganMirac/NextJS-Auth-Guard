@@ -8,6 +8,7 @@ export default function Navbar() {
     const [userAuth, setUserAuth ] = useState();
     const router= useRouter();
     useEffect(() =>{
+        // Navbarda Profile ve Login butonlarını göstermek amacıyla bir state oluşturup auth kontrolü yaptıktan sonra state'i güncelliyoruz.
         if (!userService.userValue) {
             setUserAuth(false);
         } else {
@@ -23,6 +24,7 @@ export default function Navbar() {
         }
     },[])
     const UserButtons = () =>{
+        // Kullanıcının login durumuna göre headerda gösterilecek butonlar
         if(userAuth){
             return(<>
                 <Link href='/profile'>

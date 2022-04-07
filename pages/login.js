@@ -12,6 +12,7 @@ export default function Login(){
         }
     }, []);
     const userLogin = (e) =>{
+        // form subit işlemi yapıldığı zaman default eventı durdurup userService'deki login fonksiyonumuzu çalıştırıyoruz
         e.preventDefault();
         let mail = e.target[0].value;
         let password = e.target[1].value;

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [userAuth, setUserAuth] = useState();
   useEffect(()=>{
+    // kullanıcının login durumunu state kaydediyoruz
     if(userService.userValue?.token){
       setUserAuth(true)
     }else{
@@ -13,6 +14,7 @@ export default function Home() {
     }
   })
   const UserLoginText = () =>{
+    // Kullanıcının login durumuna göre döneceğimiz index'deki yazımız
     if(userAuth){
       return(<>
       <span>
