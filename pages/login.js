@@ -16,9 +16,10 @@ export default function Login(){
         e.preventDefault();
         let mail = e.target[0].value;
         let password = e.target[1].value;
+        let url =  '/profile' || router.query.returnUrl;
         return userService.login(mail, password)
         .then((res) => {
-            router.push('/profile');
+            router.push(url);
         })
         .catch(error => {
             setErrorAlert(true);
