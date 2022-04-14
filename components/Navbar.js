@@ -12,7 +12,7 @@ export default function Navbar() {
         if (!userService.userValue) {
             setUserAuth(false);
         } else {
-            if(typeof userService.userValue?.token){
+            if(typeof userService.userValue?.token !== 'undefined'){
                 userService.checkAuth(userService.userValue?.token).then((res) => {
                     setUserAuth(true)
                 } ).catch(err => {
